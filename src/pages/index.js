@@ -3,29 +3,71 @@ import { Link, graphql } from 'gatsby'
 import Masonry from 'react-masonry-component'
 import Img from 'gatsby-image'
 import Layout from "../components/layout"
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 5,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <p style={{fontWeight:'bold'}}>developer@daviseek.com</p>
-    {/* <Masonry className="showcase">
-      {data.allDatoCmsWork.edges.map(({ node: work }) => (
-        <div key={work.id} className="showcase__item">
-          <figure className="card">
-            <Link to={`/works/${work.slug}`} className="card__image">
-              <Img fluid={work.coverImage.fluid} />
-            </Link>
-            <figcaption className="card__caption">
-              <h6 className="card__title">
-                <Link to={`/works/${work.slug}`}>{work.title}</Link>
-              </h6>
-              <div className="card__description">
-                <p>{work.excerpt}</p>
-              </div>
-            </figcaption>
-          </figure>
+    <section className="section-about">
+      <div className="container">
+        <h1 className="h1-b">David Seek</h1>
+        <h2 className="h2-b">Full Stack / iOS App Developer</h2>
+        <div className="about-social-links">
+          <i className="fab fa-linkedin-in"></i>
+          <i className="fab fa-twitter"></i>
         </div>
-      ))}
-    </Masonry> */}
+      </div>
+    </section>
+    <section className="section-work">
+      <Carousel
+        responsive={responsive}
+        infinite={true}
+        ssr={false}
+        removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
+      >
+
+        <div style={{ background: 'gray' }}>
+          <p>Test</p>
+        </div>
+
+        <div style={{ background: 'gray' }}>
+          <p>Test</p>
+        </div>
+
+        <div style={{ background: 'gray' }}>
+          <p>Test</p>
+        </div>
+
+        <div style={{ background: 'gray' }}>
+          <p>Test</p>
+        </div>
+
+        <div style={{ background: 'gray' }}>
+          <p>Test</p>
+        </div>
+
+      </Carousel>
+    </section>
   </Layout>
 )
 

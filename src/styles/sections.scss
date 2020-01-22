@@ -1,0 +1,24 @@
+section {
+    margin-top: 100px;
+    padding-bottom: 40px;
+}
+.section-about {
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-social-links {
+        display: flex;
+        justify-content: center;
+        margin-top: 48px;
+
+        i {
+            padding: 15px;
+            font-size: 33px;
+        }
+    }
+
+}

@@ -1,0 +1,44 @@
+.h1-b {
+    font-size: 160px;
+    font-weight: bold;
+}
+.h2-b {
+    font-size: 44px;
+    font-weight: 600;
+}
+  
+.nav-header {
+
+    padding-top: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    
+    .nav-contact {
+        text-align: left;
+    }
+
+    .nav-menus {
+        display: flex;
+        justify-content: flex-end;
+        text-transform: uppercase;
+
+        .nav-main-menu {
+
+            ul {
+                list-style: none;
+            }
+
+            li {
+                display: inline-block;
+                
+                a {
+                    color: $text-color;
+                }
+
+                &:not(:last-child) {
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
+}
