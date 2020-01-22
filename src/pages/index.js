@@ -105,12 +105,13 @@ const IndexPage = ({ data }) => (
           infinite={true}
           ssr={false}
           removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
+          showDots={true}
         >
           {testimonials.map((testimonial, index) => (
             <div key={index} className="testimonial-item">
-              <h2>{testimonial.testimonial}</h2>
-              <h4>{testimonial.client}</h4>
-              <p>{testimonial.work_type}</p>
+              <h2 className="testimonial-item-description h2-b">{testimonial.testimonial}</h2>
+              <h4 className="testimonial-item-client">{testimonial.client}</h4>
+              <p className="testimonial-item-worktype">{testimonial.work_type}</p>
             </div>
           ))}
         </Carousel>

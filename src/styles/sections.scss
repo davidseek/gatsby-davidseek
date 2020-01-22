@@ -44,3 +44,26 @@ section {
     }
 
 }
+
+.section-testimonials {
+    text-align: center;
+    color: $text-color;
+
+    .testimonial-item {
+        margin-bottom: 60px;
+    }
+
+    .testimonial-item-description {
+        margin-bottom: 50px;
+        font-weight: 600;
+    }
+
+    .testimonial-item-client {
+        margin-bottom: 20px;
+    }
+
+    .testimonial-item-worktype {
+        font-weight: lighter;
+        text-transform: uppercase;
+    }
+}
