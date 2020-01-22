@@ -1,10 +1,6 @@
-$light-bg-color: white;
-$light-color: #151515;
-$dark-bg-color: black;
-$dark-color: white;
-
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
-@import "features";
+@import "variables";
+@import "layouts";
 @import "sections";
 
 body {
@@ -16,6 +12,15 @@ body {
 ul, li {
   margin: 0;
   padding: 0;
+}
+
+.h1-b {
+  font-size: 160px;
+  font-weight: bold;
+}
+.h2-b {
+  font-size: 44px;
+  font-weight: 600;
 }
 
 @media (prefers-color-scheme: dark) {
