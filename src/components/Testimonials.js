@@ -21,15 +21,7 @@ const responsiveCarousel = {
     },
 };
 
-const testimonials = [
-    {
-        testimonial: '"David is good to work with and he delivers a good quality, complete solution: App + Backend. David challenged my assumptions and the outcome was a better App."',
-        client: 'Hugo Schot',
-        work_type: 'FREELANCING PROJECT'
-    }
-]
-
-const Testimonials = () => (
+const Testimonials = ({data}) => (
     <section className="section-testimonials">
         <div className="container">
             <Carousel
@@ -39,11 +31,11 @@ const Testimonials = () => (
                 removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
                 showDots={true}
             >
-                {testimonials.map((testimonial, index) => (
+                {data && data.edges.map((testimonial, index) => (
                     <div key={index} className="testimonial-item">
-                        <h2 className="testimonial-item-description h2-b">{testimonial.testimonial}</h2>
-                        <h4 className="testimonial-item-client">{testimonial.client}</h4>
-                        <p className="testimonial-item-worktype">{testimonial.work_type}</p>
+                        <h2 className="testimonial-item-description h2-b">{testimonial.node.testimonial}</h2>
+                        <h4 className="testimonial-item-client">{testimonial.node.client}</h4>
+                        <p className="testimonial-item-worktype">{testimonial.node.workType}</p>
                     </div>
                 ))}
             </Carousel>

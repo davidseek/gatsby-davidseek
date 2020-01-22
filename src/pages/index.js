@@ -10,8 +10,8 @@ const IndexPage = ({ data }) => (
   <Layout>
     <About data={data.datoCmsAbout}/>
     <Work data={data.allDatoCmsWork}/>
-    <Testimonials/>
-    <Contact/>
+    <Testimonials data={data.allDatoCmsTestimonial}/>
+    <Contact data={data.datoCmsForm}/>
   </Layout>
 )
 
@@ -41,10 +41,25 @@ export const query = graphql`
         }
       }
     }
+    allDatoCmsTestimonial {
+      edges {
+        node {
+          testimonial
+          client
+          workType
+        }
+      }
+    }
+    datoCmsForm(name:{eq:"Contact David"}) {
+      name
+      inputFields {
+        name
+        inputType
+        placeholder
+        required
+        col
+      }
+      submitText
+    }
   }
 `
-// coverImage {
-//   fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
-//     ...GatsbyDatoCmsSizes
-//   }
-// }
