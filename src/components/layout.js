@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { StaticQuery, graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 
-import "../styles/index.sass";
+import "../styles/index.scss";
 
 const TemplateWrapper = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -47,7 +47,7 @@ const TemplateWrapper = ({ children }) => {
             favicon={data.datoCmsSite.faviconMetaTags}
             seo={data.datoCmsHome.seoMetaTags}
           />
-          <div className="container__sidebar">
+          {/* <div className="container__sidebar">
             <div className="sidebar">
               <h6 className="sidebar__title">
                 <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
@@ -83,9 +83,9 @@ const TemplateWrapper = ({ children }) => {
                 {data.datoCmsHome.copyright}
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="container__body">
-            <div className="container__mobile-header">
+            {/* <div className="container__mobile-header">
               <div className="mobile-header">
                 <div className="mobile-header__menu">
                   <a
@@ -100,7 +100,7 @@ const TemplateWrapper = ({ children }) => {
                   <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
                 </div>
               </div>
-            </div>
+            </div> */}
             {children}
           </div>
         </div>

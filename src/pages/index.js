@@ -6,7 +6,8 @@ import Layout from "../components/layout"
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <Masonry className="showcase">
+    <p style={{fontWeight:'bold'}}>developer@daviseek.com</p>
+    {/* <Masonry className="showcase">
       {data.allDatoCmsWork.edges.map(({ node: work }) => (
         <div key={work.id} className="showcase__item">
           <figure className="card">
@@ -24,28 +25,28 @@ const IndexPage = ({ data }) => (
           </figure>
         </div>
       ))}
-    </Masonry>
+    </Masonry> */}
   </Layout>
 )
 
 export default IndexPage
 
-export const query = graphql`
-  query IndexQuery {
-    allDatoCmsWork(sort: { fields: [position], order: ASC }) {
-      edges {
-        node {
-          id
-          title
-          slug
-          excerpt
-          coverImage {
-            fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
-              ...GatsbyDatoCmsSizes
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query IndexQuery {
+//     allDatoCmsWork(sort: { fields: [position], order: ASC }) {
+//       edges {
+//         node {
+//           id
+//           title
+//           slug
+//           excerpt
+//           coverImage {
+//             fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
+//               ...GatsbyDatoCmsSizes
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
