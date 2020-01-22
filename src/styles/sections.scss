@@ -67,3 +67,47 @@ section {
         text-transform: uppercase;
     }
 }
+
+.section-contact {
+    text-align: center;
+
+    .container {
+        padding: 0 220px;
+    }
+
+    h2 {
+        font-size: 60px;
+        font-weight: 600;
+    }
+
+    form {
+        margin: 45px 0;
+
+        .field {
+            width: 100%;
+            margin-bottom: 25px;
+            border: 0;
+            border-bottom: 2px solid $text-color;
+            padding-bottom: 10px;
+
+            &:focus {
+                outline: none !important;
+            }
+
+            &::placeholder {
+                color: $text-color;
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+        }
+
+        button {
+            padding: 20px 30px;
+            border: 0;
+            background: $text-color;
+            color: $bg-color;
+            text-transform: uppercase;
+        }
+    }
+}

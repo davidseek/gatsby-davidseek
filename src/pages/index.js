@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby'
 import Masonry from 'react-masonry-component'
 import Img from 'gatsby-image'
 import Layout from "../components/layout"
+import { Row, Col } from 'react-bootstrap';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -115,6 +116,25 @@ const IndexPage = ({ data }) => (
             </div>
           ))}
         </Carousel>
+      </div>
+    </section>
+    <section className="section-contact">
+      <div className="container">
+        <h2>Contact David</h2>
+        <form>
+          <Row>
+            <Col lg={6}>
+              <input className="field" type="text" placeholder="Your Name*"></input>
+            </Col>
+            <Col lg={6}>
+              <input className="field" type="email" placeholder="Your Email*"></input>
+            </Col>
+            <Col lg={12}>
+              <textarea className="field" rows="4" placeholder="Your Message*"></textarea>
+            </Col>
+          </Row>
+          <button type="submit">Send Message</button>
+        </form>
       </div>
     </section>
   </Layout>
