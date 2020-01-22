@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const responsive = {
+const responsiveWorkPortfolio = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
@@ -26,6 +26,52 @@ const responsive = {
   },
 };
 
+const responsiveTestimonials = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+const workPortfolio = [
+  {
+    image: 'https://image.freepik.com/free-vector/orange-polygon-background_1407-134.jpg'
+  },
+  {
+    image: 'https://image.freepik.com/free-photo/abstract-color-powder-explosion-white-background-freeze-motion-dust-splash_36326-1805.jpg'
+  },
+  {
+    image: 'http://getwallpapers.com/wallpaper/full/5/b/d/143174.jpg'
+  },
+  {
+    image: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/abstract-color-wave-kathy-kurtz.jpg'
+  },
+  {
+    image: 'https://images.freecreatives.com/wp-content/uploads/2016/04/Download-Abstract-Color-Background.jpg'
+  }
+];
+
+const testimonials = [
+  {
+    testimonial: '"David is good to work with and he delivers a good quality, complete solution: App + Backend. David challenged my assumptions and the outcome was a better App."',
+    client: 'Hugo Schot',
+    work_type: 'FREELANCING PROJECT'
+  }
+]
+
 const IndexPage = ({ data }) => (
   <Layout>
     <section className="section-about">
@@ -40,33 +86,35 @@ const IndexPage = ({ data }) => (
     </section>
     <section className="section-work">
       <Carousel
-        responsive={responsive}
+        responsive={responsiveWorkPortfolio}
         infinite={true}
         ssr={false}
         removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
       >
-
-        <div style={{ background: 'gray' }}>
-          <p>Test</p>
-        </div>
-
-        <div style={{ background: 'gray' }}>
-          <p>Test</p>
-        </div>
-
-        <div style={{ background: 'gray' }}>
-          <p>Test</p>
-        </div>
-
-        <div style={{ background: 'gray' }}>
-          <p>Test</p>
-        </div>
-
-        <div style={{ background: 'gray' }}>
-          <p>Test</p>
-        </div>
-
+        {workPortfolio.map((work, index) => (
+          <div key={index} className="work-item">
+            <img src={work.image} />
+          </div>
+        ))}
       </Carousel>
+    </section>
+    <section className="section-testimonials">
+      <div className="container">
+        <Carousel
+          responsive={responsiveTestimonials}
+          infinite={true}
+          ssr={false}
+          removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
+        >
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="testimonial-item">
+              <h2>{testimonial.testimonial}</h2>
+              <h4>{testimonial.client}</h4>
+              <p>{testimonial.work_type}</p>
+            </div>
+          ))}
+        </Carousel>
+      </div>
     </section>
   </Layout>
 )
