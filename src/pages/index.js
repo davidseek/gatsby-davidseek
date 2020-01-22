@@ -8,8 +8,8 @@ import Contact from '../components/Contact';
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <About/>
-    <Work/>
+    <About data={data.datoCmsAbout}/>
+    <Work data={data.allDatoCmsWork}/>
     <Testimonials/>
     <Contact/>
   </Layout>
@@ -17,22 +17,34 @@ const IndexPage = ({ data }) => (
 
 export default IndexPage
 
-// export const query = graphql`
-//   query IndexQuery {
-//     allDatoCmsWork(sort: { fields: [position], order: ASC }) {
-//       edges {
-//         node {
-//           id
-//           title
-//           slug
-//           excerpt
-//           coverImage {
-//             fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
-//               ...GatsbyDatoCmsSizes
-//             }
-//           }
-//         }
-//       }
-//     }
+export const query = graphql`
+  query IndexQuery {
+    datoCmsAbout {
+      title
+      subtitle
+      socialLinks {
+        alt
+        fontAwesomeIcon
+        url
+      }
+    }
+    allDatoCmsWork {
+      edges {
+        node {
+          id
+          fontAwesomeIcon
+          coverImage {
+            fluid(imgixParams: { fm: "jpg", auto: "compress" }) {
+              ...GatsbyDatoCmsSizes
+            }
+          }
+        }
+      }
+    }
+  }
+`
+// coverImage {
+//   fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
+//     ...GatsbyDatoCmsSizes
 //   }
-// `
+// }

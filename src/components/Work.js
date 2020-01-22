@@ -1,4 +1,5 @@
 import React from 'react'
+import Img from 'gatsby-image'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -39,7 +40,7 @@ const workPortfolio = [
     }
 ];
 
-const Work = () => (
+const Work = ({data}) => (
     <section className="section-work">
         <Carousel
             responsive={responsiveCarousel}
@@ -47,11 +48,11 @@ const Work = () => (
             ssr={false}
             removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
         >
-            {workPortfolio.map((work, index) => (
+            {data.edges.map((work, index) => (
                 <div key={index} className="work-item">
                     <div className="work-overlay"/>
-                    <img src={work.image} />
-                    <i className="fab fa-app-store"></i>
+                    <Img fluid={work.node.coverImage.fluid}/>
+                    <i className={work.node.fontAwesomeIcon}></i>
                 </div>
             ))}
         </Carousel>
