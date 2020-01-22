@@ -20,6 +20,19 @@ const TemplateWrapper = ({ children }) => {
               ...GatsbyDatoCmsFaviconMetaTags
             }
           }
+          datoCmsHome {
+            seoMetaTags {
+              ...GatsbyDatoCmsSeoMetaTags
+            }
+            email
+            copyright
+          }
+          datoCmsMenu(name:{eq:"Main menu"}) {
+            menuItems {
+              title
+              url
+            }
+          }
         }
       `}
       render={data => (
@@ -31,9 +44,9 @@ const TemplateWrapper = ({ children }) => {
           <HelmetDatoCms>
             <script src="https://kit.fontawesome.com/d3d6f2df1f.js" crossorigin="anonymous"></script>
           </HelmetDatoCms>
-          <Header />
+          <Header email={data.datoCmsHome.email} mainMenu={data.datoCmsMenu} />
           {children}
-          <Footer/>
+          <Footer copyright={data.datoCmsHome.copyright}/>
         </div>
       )}
     />

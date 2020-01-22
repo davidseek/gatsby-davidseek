@@ -2,6 +2,7 @@
 @import "variables";
 @import "layouts";
 @import "sections";
+@import "responsive";
 
 body {
   font-family: 'Raleway';
@@ -15,11 +16,9 @@ ul, li {
 }
 
 .h1-b {
-  font-size: 160px;
   font-weight: bold;
 }
 .h2-b {
-  font-size: 44px;
   font-weight: 600;
 }
 

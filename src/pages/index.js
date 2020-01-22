@@ -8,10 +8,12 @@ import Contact from '../components/Contact';
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <About data={data.datoCmsAbout}/>
-    <Work data={data.allDatoCmsWork}/>
-    <Testimonials data={data.allDatoCmsTestimonial}/>
-    <Contact data={data.datoCmsForm}/>
+    <React.Fragment>
+      <About data={data.datoCmsAbout} />
+      <Work data={data.allDatoCmsWork} />
+      <Testimonials data={data.allDatoCmsTestimonial} />
+      <Contact data={data.datoCmsForm} />
+    </React.Fragment>
   </Layout>
 )
 

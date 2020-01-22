@@ -17,6 +17,10 @@ section {
         align-items: center;
     }
 
+    h2 {
+        letter-spacing: 1.6px;
+    }
+
     .about-social-links {
         display: flex;
         justify-content: center;
@@ -106,15 +110,17 @@ section {
     .testimonial-item-description {
         margin-bottom: 50px;
         font-weight: 600;
+        letter-spacing: 6px;
     }
 
     .testimonial-item-client {
         margin-bottom: 20px;
+        font-weight: 600;
     }
 
     .testimonial-item-worktype {
-        font-weight: lighter;
         text-transform: uppercase;
+        font-weight: 600;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -132,6 +138,7 @@ section {
     h2 {
         font-size: 60px;
         font-weight: 600;
+        letter-spacing: -2px;
     }
 
     form {
