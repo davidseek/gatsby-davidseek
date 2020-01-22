@@ -47,7 +47,7 @@ section {
 
 .section-testimonials {
     text-align: center;
-    color: $text-color;
+    color: $light-color;
 
     .testimonial-item {
         margin-bottom: 60px;
@@ -65,6 +65,10 @@ section {
     .testimonial-item-worktype {
         font-weight: lighter;
         text-transform: uppercase;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: $dark-color;
     }
 }
 
@@ -87,27 +91,43 @@ section {
             width: 100%;
             margin-bottom: 25px;
             border: 0;
-            border-bottom: 2px solid $text-color;
+            border-bottom: 2px solid $light-color;
             padding-bottom: 10px;
+            background: none;
+            color: $light-color;
 
             &:focus {
                 outline: none !important;
             }
 
             &::placeholder {
-                color: $text-color;
+                color: $light-color;
                 font-size: 18px;
                 font-weight: 600;
                 margin-bottom: 5px;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                border-bottom-color: $dark-color;
+                color: $dark-color;
+                &::placeholder {
+                    color: $dark-color;
+                }
             }
         }
 
         button {
             padding: 20px 30px;
             border: 0;
-            background: $text-color;
-            color: $bg-color;
+            background: $light-color;
+            color: $light-bg-color;
             text-transform: uppercase;
+            font-weight: 600;
+
+            @media (prefers-color-scheme: dark) {
+                background: $dark-color;
+                color: $dark-bg-color;
+            }
         }
     }
 }

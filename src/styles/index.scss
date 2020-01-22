@@ -1,27 +1,26 @@
-$bg-color: white;
-$text-color: #151515;
+$light-bg-color: white;
+$light-color: #151515;
+$dark-bg-color: black;
+$dark-color: white;
 
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @import "features";
 @import "sections";
 
-html {
-  --bg-color: white;
-  --text-color: #151515; 
-}
-
-html[data-theme='dark'] {
-  --bg-color: black;
-  --text-color:#ffffff;
-}
-    
 body {
   font-family: 'Raleway';
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: $light-bg-color;
+  color: $light-color;
 }
 
 ul, li {
   margin: 0;
   padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: $dark-bg-color;
+    color: $dark-color;
+  }
 }

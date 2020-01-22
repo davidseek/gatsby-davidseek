@@ -32,8 +32,15 @@
                 display: inline-block;
                 
                 a {
-                    color: $text-color;
+                    color: $light-color;
                 }
+
+                @media (prefers-color-scheme: dark) {
+                    a {
+                      color: $dark-color;
+                    }
+                  }
+                  
 
                 &:not(:last-child) {
                     padding-right: 20px;
@@ -46,5 +53,5 @@
 .footer-section {
     text-align: center;
     margin: 40px 0;
-    font-weight: 600;
+    // font-weight: 600;
 }
