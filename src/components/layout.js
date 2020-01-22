@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import { StaticQuery, graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Header from "./header";
+import Footer from "./footer";
 
 const TemplateWrapper = ({ children }) => {
 
@@ -32,6 +33,7 @@ const TemplateWrapper = ({ children }) => {
           </HelmetDatoCms>
           <Header />
           {children}
+          <Footer/>
         </div>
       )}
     />
