@@ -49,7 +49,9 @@ const Work = () => (
         >
             {workPortfolio.map((work, index) => (
                 <div key={index} className="work-item">
+                    <div className="work-overlay"/>
                     <img src={work.image} />
+                    <i className="fab fa-app-store"></i>
                 </div>
             ))}
         </Carousel>
