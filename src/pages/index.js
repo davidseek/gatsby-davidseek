@@ -8,6 +8,7 @@ import Contact from '../components/Contact';
 // import { SectionsContainer } from 'react-fullpage';
 import { useSwipeable, Swipeable } from 'react-swipeable'
 import FullScreen from '../components/FullScreen';
+import Scroll from 'react-scroll';
 
 const IndexPage = ({ data }) => {
   // let options = {

@@ -3,6 +3,7 @@ import Img from 'gatsby-image'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Section } from 'react-fullpage';
+import { Element } from 'react-scroll';
 
 const responsiveCarousel = {
     superLargeDesktop: {
@@ -24,24 +25,26 @@ const responsiveCarousel = {
 };
 
 const Work = ({ data }) => (
-    <section className="section-work">
-        <div className="container">
-            <Carousel
-                responsive={responsiveCarousel}
-                infinite={true}
-                ssr={false}
-                removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
-            >
-                {data && data.edges.map((work, index) => (
-                    <div key={index} className="work-item">
-                        <div className="work-overlay" />
-                        <Img fluid={work.node.coverImage.fluid} />
-                        <i className={work.node.fontAwesomeIcon}></i>
-                    </div>
-                ))}
-            </Carousel>
-        </div>
-    </section>
+    <Element name="#section-work">
+        <section className="section-work">
+            <div className="container">
+                <Carousel
+                    responsive={responsiveCarousel}
+                    infinite={true}
+                    ssr={false}
+                    removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
+                >
+                    {data && data.edges.map((work, index) => (
+                        <div key={index} className="work-item">
+                            <div className="work-overlay" />
+                            <Img fluid={work.node.coverImage.fluid} />
+                            <i className={work.node.fontAwesomeIcon}></i>
+                        </div>
+                    ))}
+                </Carousel>
+            </div>
+        </section>
+    </Element>
 )
 
 export default Work

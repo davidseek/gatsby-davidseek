@@ -1,5 +1,6 @@
 import React from "react";
 import { Swipeable } from 'react-swipeable'
+import {animateScroll} from 'react-scroll';
 
 export default class FullScreen extends React.Component {
 
@@ -21,7 +22,7 @@ export default class FullScreen extends React.Component {
         const gapSectionContailer = this.sectionContainer.getBoundingClientRect().top;
         let tempSections = []
         this.sectionContainer.childNodes.forEach(childNode => {
-            tempSections.push(childNode.getBoundingClientRect().top - gapSectionContailer)
+            tempSections.push(childNode.getBoundingClientRect().top)
         });
         this.setState({
             sections: tempSections
@@ -30,14 +31,24 @@ export default class FullScreen extends React.Component {
 
     scrollDetected = (e) => {
         const maxPages = this.state.sections.length;
-        let currentPage = this.state.currentPage;
+        let prevCurrentPage = this.state.currentPage;
+        let currentPage = prevCurrentPage;
 
         if (e.nativeEvent.wheelDelta > 0) { // UP
             currentPage = this.state.currentPage - 1 >= 0 ? this.state.currentPage - 1 : currentPage;
+            if (prevCurrentPage == currentPage) {
+                animateScroll.scrollToTop();
+                return;
+            }
         } else { // DOWN
             currentPage = this.state.currentPage + 1 < maxPages ? this.state.currentPage + 1 : currentPage;
+            if (prevCurrentPage == currentPage) {
+                animateScroll.scrollToBottom();
+                return;
+            }
         }
-        this.setState({ currentPage: currentPage, offset: -this.state.sections[currentPage] })
+        this.setState({ currentPage: currentPage })
+        animateScroll.scrollTo(this.state.sections[currentPage]);
     }
 
     onSwipedUp = (e) => {
@@ -45,7 +56,7 @@ export default class FullScreen extends React.Component {
         let currentPage = this.state.currentPage;
         currentPage = this.state.currentPage + 1 < maxPages ? this.state.currentPage + 1 : currentPage;
         this.setState({ currentPage: currentPage, offset: -this.state.sections[currentPage] })
-        
+
     }
 
     onSwipedDown = (e) => {

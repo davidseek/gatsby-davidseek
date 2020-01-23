@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
+import { Link } from "react-scroll";
 import { StaticQuery, graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { Row, Col } from 'react-bootstrap';
@@ -21,7 +21,7 @@ const Header = ({ email, mainMenu }) => {
                             <div className="nav-main-menu">
                                 <ul>
                                     {mainMenu.menuItems.map((menu, index) => (
-                                        <li key={index}><a href={menu.url}>{menu.title}</a></li>
+                                        <li key={index}><Link to={menu.url} smooth={true} duration={500}>{menu.title}</Link></li>
                                     ))}
                                 </ul>
                             </div>
