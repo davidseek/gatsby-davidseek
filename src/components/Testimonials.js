@@ -23,23 +23,25 @@ const responsiveCarousel = {
 };
 
 const Testimonials = ({ data }) => (
-    <section className="section-testimonials">
+    <section className="section-testimonials center-section">
         <div className="container">
-            <Carousel
-                responsive={responsiveCarousel}
-                infinite={true}
-                ssr={false}
-                removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
-                showDots={true}
-            >
-                {data && data.edges.map((testimonial, index) => (
-                    <div key={index} className="testimonial-item">
-                        <h2 className="testimonial-item-description h2-b">{testimonial.node.testimonial}</h2>
-                        <h4 className="testimonial-item-client">{testimonial.node.client}</h4>
-                        <p className="testimonial-item-worktype">{testimonial.node.workType}</p>
-                    </div>
-                ))}
-            </Carousel>
+            <div className="container">
+                <Carousel
+                    responsive={responsiveCarousel}
+                    infinite={true}
+                    ssr={false}
+                    removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
+                    showDots={true}
+                >
+                    {data && data.edges.map((testimonial, index) => (
+                        <div key={index} className="testimonial-item">
+                            <h2 className="testimonial-item-description h2-b">{testimonial.node.testimonial}</h2>
+                            <h4 className="testimonial-item-client">{testimonial.node.client}</h4>
+                            <p className="testimonial-item-worktype">{testimonial.node.workType}</p>
+                        </div>
+                    ))}
+                </Carousel>
+            </div>
         </div>
     </section>
 )

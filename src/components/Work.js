@@ -24,7 +24,8 @@ const responsiveCarousel = {
 };
 
 const Work = ({ data }) => (
-        <section className="section-work">
+    <section className="section-work">
+        <div className="container">
             <Carousel
                 responsive={responsiveCarousel}
                 infinite={true}
@@ -39,7 +40,8 @@ const Work = ({ data }) => (
                     </div>
                 ))}
             </Carousel>
-        </section>
+        </div>
+    </section>
 )
 
 export default Work

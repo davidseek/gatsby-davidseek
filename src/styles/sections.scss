@@ -1,8 +1,9 @@
+.FullScreenComponent {
+    overflow: hidden;
+}
 .SectionContainer {
     height: 100%;
     width: 100%;
-    overflow: hidden;
-    // transform: translate3d(0,0,0);
     transition: all 0.5s ease-in;
 }
 .section-layout {
@@ -11,14 +12,7 @@
 
 
 section {
-    // margin-top: 100px;
-    // padding-bottom: 100px;
-    // height: 100vh;
     min-height: 100vh;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // scroll-snap-align: start;
 
     .container {
         width: 85%;
@@ -29,15 +23,14 @@ section {
 
 
 .center-section {
-    // padding-top: 100px;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // padding-bottom: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .section-about {
     text-align: center;
+    padding-top: 100px;
 
     .container {
         display: flex;
@@ -161,7 +154,9 @@ section {
     text-align: center;
 
     .container {
-        width: 70%;
+        .container {
+            width: 70%;
+        }
     }
 
     h2 {

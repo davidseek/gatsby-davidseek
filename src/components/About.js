@@ -2,7 +2,8 @@ import React from 'react'
 import { Section } from 'react-fullpage';
 
 const About = ({ data }) => (
-        <section className="section-about">
+    <section className="section-about">
+        <div className="container">
             <div className="container">
                 {data && (
                     <React.Fragment>
@@ -16,7 +17,8 @@ const About = ({ data }) => (
                     </React.Fragment>
                 )}
             </div>
-        </section>
+        </div>
+    </section>
 )
 
 export default About
