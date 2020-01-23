@@ -2,7 +2,7 @@ import React from 'react'
 import { Section } from 'react-fullpage';
 
 const About = ({ data }) => (
-        <section className="section-about center-section">
+        <section className="section-about">
             <div className="container">
                 {data && (
                     <React.Fragment>

@@ -23,7 +23,7 @@ const responsiveCarousel = {
 };
 
 const Testimonials = ({ data }) => (
-    <section className="section-testimonials center-section">
+    <section className="section-testimonials">
         <div className="container">
             <Carousel
                 responsive={responsiveCarousel}

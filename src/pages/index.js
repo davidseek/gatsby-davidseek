@@ -29,14 +29,14 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <div style={{overflow:'hidden'}}>
-        <SectionsContainer {...options}>
+      {/* <div style={{overflow:'hidden'}}>
+        <SectionsContainer {...options}> */}
           <About data={data.datoCmsAbout} />
           <Work data={data.allDatoCmsWork} />
           <Testimonials data={data.allDatoCmsTestimonial} />
           <Contact data={data.datoCmsForm} />
-        </SectionsContainer>
-      </div>
+        {/* </SectionsContainer> */}
+      {/* </div> */}
     </Layout>
   )
 }

@@ -53,7 +53,7 @@ const Contact = ({ data }) => {
     }
 
     return (
-        <section className="section-contact center-section">
+        <section className="section-contact">
             <div className="container">
                 <h2>Contact David</h2>
                 <form onSubmit={handleSubmit}>
