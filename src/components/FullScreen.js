@@ -1,6 +1,6 @@
 import React from "react";
 import { Swipeable } from 'react-swipeable'
-import {animateScroll} from 'react-scroll';
+import { animateScroll } from 'react-scroll';
 
 export default class FullScreen extends React.Component {
 
@@ -19,7 +19,7 @@ export default class FullScreen extends React.Component {
     componentDidMount() {
         document.body.style.overflow = 'hidden';
         this.sectionContainer = document.getElementById('SectionContainer');
-        const gapSectionContailer = this.sectionContainer.getBoundingClientRect().top;
+        // const gapSectionContailer = this.sectionContainer.getBoundingClientRect().top;
         let tempSections = []
         this.sectionContainer.childNodes.forEach(childNode => {
             tempSections.push(childNode.getBoundingClientRect().top)
@@ -53,25 +53,34 @@ export default class FullScreen extends React.Component {
 
     onSwipedUp = (e) => {
         const maxPages = this.state.sections.length;
-        let currentPage = this.state.currentPage;
+        let prevCurrentPage = this.state.currentPage;
+        let currentPage = prevCurrentPage;
         currentPage = this.state.currentPage + 1 < maxPages ? this.state.currentPage + 1 : currentPage;
-        this.setState({ currentPage: currentPage, offset: -this.state.sections[currentPage] })
-
+        if (prevCurrentPage == currentPage) {
+            animateScroll.scrollToBottom();
+            return;
+        }
+        this.setState({ currentPage: currentPage })
+        animateScroll.scrollTo(this.state.sections[currentPage]);
     }
 
     onSwipedDown = (e) => {
-        let currentPage = this.state.currentPage;
+        let prevCurrentPage = this.state.currentPage;
+        let currentPage = prevCurrentPage;
         currentPage = this.state.currentPage - 1 >= 0 ? this.state.currentPage - 1 : currentPage;
-        this.setState({ currentPage: currentPage, offset: -this.state.sections[currentPage] })
+        if (prevCurrentPage == currentPage) {
+            animateScroll.scrollToTop();
+            return;
+        }
+        this.setState({ currentPage: currentPage })
+        animateScroll.scrollTo(this.state.sections[currentPage]);
     }
 
     render() {
-        const cssContainer = { transform: `translate3d(0,${this.state.offset}px,0)` };
-
         return (
             <div className="FullScreenComponent">
                 <Swipeable onSwipedDown={this.onSwipedDown} onSwipedUp={this.onSwipedUp}>
-                    <div className="SectionContainer" id="SectionContainer" style={cssContainer}
+                    <div className="SectionContainer" id="SectionContainer"
                         onWheel={this.scrollDetected}>
                         {this.props.children}
                     </div>
