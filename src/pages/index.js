@@ -17,7 +17,7 @@ const IndexPage = ({ data }) => {
     navigation: false, // use dots navigatio
     scrollBar: false, // use the browser default scrollbar
     sectionClassName: 'Section', // the section class name
-    sectionPaddingTop: '600px', // the section top padding
+    sectionPaddingTop: '0', // the section top padding
     sectionPaddingBottom: '0', // the section bottom padding
     verticalAlign: false, // align the content of each section vertical
   };
