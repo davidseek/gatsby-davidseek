@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Header from "./header";
 import Footer from "./footer";
+import { Header as HeaderFullPage, Footer as FooterFullpage } from 'react-fullpage';
 
 const TemplateWrapper = ({ children }) => {
 
@@ -46,7 +47,7 @@ const TemplateWrapper = ({ children }) => {
           </HelmetDatoCms>
           <Header email={data.datoCmsHome.email} mainMenu={data.datoCmsMenu} />
           {children}
-          <Footer copyright={data.datoCmsHome.copyright}/>
+          <Footer copyright={data.datoCmsHome.copyright} />
         </div>
       )}
     />

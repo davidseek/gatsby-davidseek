@@ -1,6 +1,7 @@
 import React from 'react'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Section } from 'react-fullpage';
 
 const responsiveCarousel = {
     superLargeDesktop: {
@@ -21,8 +22,8 @@ const responsiveCarousel = {
     },
 };
 
-const Testimonials = ({data}) => (
-    <section className="section-testimonials">
+const Testimonials = ({ data }) => (
+    <section className="section-testimonials center-section">
         <div className="container">
             <Carousel
                 responsive={responsiveCarousel}

@@ -19,12 +19,8 @@ const Header = ({email,mainMenu}) => {
                     <div className="nav-main-menu">
                         <ul>
                             {mainMenu.menuItems.map((menu,index) => (
-                                <li key={index}><Link to={menu.url}>{menu.title}</Link></li>
+                                <li key={index}><a href={menu.url}>{menu.title}</a></li>
                             ))}
-                            {/* <li><Link to="#">About</Link></li>
-                            <li><Link to="#">Work</Link></li>
-                            <li><Link to="#">Testimonials</Link></li>
-                            <li><Link to="#">Contact</Link></li> */}
                         </ul>
                     </div>
                 </Col>

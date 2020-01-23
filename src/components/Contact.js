@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap';
+import { Section } from 'react-fullpage';
 
 const RenderInputType = ({ value, inputField, handleOnChange }) => {
     switch (inputField.inputType) {
@@ -52,7 +53,7 @@ const Contact = ({ data }) => {
     }
 
     return (
-        <section className="section-contact">
+        <section className="section-contact center-section">
             <div className="container">
                 <h2>Contact David</h2>
                 <form onSubmit={handleSubmit}>
