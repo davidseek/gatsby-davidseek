@@ -5,17 +5,17 @@ import { StaticQuery, graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { Row, Col } from 'react-bootstrap';
 
-const Footer = ({copyright}) => {
+const Footer = ({ copyright }) => {
 
     return (
         <section className="section-layout">
-        <div className="footer-section">
-            <Row>
-                <Col lg={12}>
-                    <p>{copyright}</p>
-                </Col>
-            </Row>
-        </div>
+            <div className="footer-section">
+                <Row>
+                    <Col lg={12}>
+                        <p>{copyright}</p>
+                    </Col>
+                </Row>
+            </div>
         </section>
     );
 };
