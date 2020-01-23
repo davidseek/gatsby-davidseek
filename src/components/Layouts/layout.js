@@ -45,9 +45,9 @@ const TemplateWrapper = ({ children }) => {
           <HelmetDatoCms>
             <script src="https://kit.fontawesome.com/d3d6f2df1f.js" crossorigin="anonymous"></script>
           </HelmetDatoCms>
-          {/* <Header email={data.datoCmsHome.email} mainMenu={data.datoCmsMenu} /> */}
+          <Header email={data.datoCmsHome.email} mainMenu={data.datoCmsMenu} />
           {children}
-          {/* <Footer copyright={data.datoCmsHome.copyright} /> */}
+          <Footer copyright={data.datoCmsHome.copyright} />
         </div>
       )}
     />
