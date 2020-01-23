@@ -5,27 +5,29 @@ import { StaticQuery, graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { Row, Col } from 'react-bootstrap';
 
-const Header = ({email,mainMenu}) => {
+const Header = ({ email, mainMenu }) => {
 
     return (
-        <div className="nav-header">
-            <Row>
-                <Col lg={3} className="nav-contact">
-                    <div>
-                        <p>{email}</p>
-                    </div>
-                </Col>
-                <Col lg={9} className="nav-menus">
-                    <div className="nav-main-menu">
-                        <ul>
-                            {mainMenu.menuItems.map((menu,index) => (
-                                <li key={index}><a href={menu.url}>{menu.title}</a></li>
-                            ))}
-                        </ul>
-                    </div>
-                </Col>
-            </Row>
-        </div>
+        <section className="section-layout">
+            <div className="nav-header">
+                <Row>
+                    <Col lg={3} className="nav-contact">
+                        <div>
+                            <p>{email}</p>
+                        </div>
+                    </Col>
+                    <Col lg={9} className="nav-menus">
+                        <div className="nav-main-menu">
+                            <ul>
+                                {mainMenu.menuItems.map((menu, index) => (
+                                    <li key={index}><a href={menu.url}>{menu.title}</a></li>
+                                ))}
+                            </ul>
+                        </div>
+                    </Col>
+                </Row>
+            </div>
+        </section>
     );
 };
 

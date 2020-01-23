@@ -8,6 +8,7 @@ import { Row, Col } from 'react-bootstrap';
 const Footer = ({copyright}) => {
 
     return (
+        <section className="section-layout">
         <div className="footer-section">
             <Row>
                 <Col lg={12}>
@@ -15,6 +16,7 @@ const Footer = ({copyright}) => {
                 </Col>
             </Row>
         </div>
+        </section>
     );
 };
 

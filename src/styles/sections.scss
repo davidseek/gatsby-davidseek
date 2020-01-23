@@ -1,13 +1,19 @@
 .SectionContainer {
 }
+.section-layout {
+    min-height: auto !important;
+}
+
+
 section {
     // margin-top: 100px;
     // padding-bottom: 100px;
     // height: 100vh;
-    min-height: 100vh !important;
+    min-height: 100vh;
     // display: flex;
     // justify-content: center;
     // align-items: center;
+    scroll-snap-align: start;
 
     .container {
         width: 85%;
@@ -15,6 +21,7 @@ section {
         // padding-bottom: 100px;
     }
 }
+
 
 .center-section {
     // padding-top: 100px;

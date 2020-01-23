@@ -4,6 +4,10 @@
 @import "sections";
 @import "responsive";
 
+html {
+  scroll-snap-type: y mandatory;
+  scroll-margin: 1;
+}
 body {
   font-family: 'Raleway';
   background-color: $light-bg-color;
