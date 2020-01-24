@@ -5,6 +5,7 @@
   "author": "Stefano Verna <s.verna@datocms.com>",
   "dependencies": {
     "axios": "^0.19.2",
+    "body-scroll-lock": "^2.6.4",
     "bootstrap": "^4.4.1",
     "dotenv": "^8.1.0",
     "gatsby": "^2.15.30",

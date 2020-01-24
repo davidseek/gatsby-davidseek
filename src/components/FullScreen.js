@@ -1,6 +1,7 @@
 import React from "react";
 import { Swipeable } from 'react-swipeable'
 import { animateScroll, scroller } from 'react-scroll';
+const bodyScrollLock = require('body-scroll-lock');
 
 export default class FullScreen extends React.Component {
 
@@ -21,6 +22,7 @@ export default class FullScreen extends React.Component {
     componentDidMount() {
         // document.body.style.overflow = 'hidden';
         localStorage.removeItem('currentSection');
+        bodyScrollLock.disableBodyScroll(document.getElementsByTagName("html"))
     }
 
     getCurrentSection() {
