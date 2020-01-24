@@ -166,12 +166,22 @@ section {
     }
 
     .testimonial-dot {
-        border: 0;
-        border-radius: 50%;
-        min-width: 12px;
-        min-height: 12px;
+        display: inline-block;
+        width: 12px;
         background-color: #ebebeb;
-        margin: 0 5px;
+        height: 12px;
+        border-radius: 50%;
+        opacity: 1;
+        padding: 5px 5px 5px 5px;
+        box-shadow: none;
+        -webkit-transition: background .5s;
+        transition: background .5s;
+        padding: 0;
+        margin: 0;
+        margin-right: 6px;
+        outline: 0;
+        cursor: pointer;
+        border: 0;
 
         &:focus {
             outline: none;
