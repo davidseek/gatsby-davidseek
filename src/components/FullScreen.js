@@ -1,7 +1,6 @@
 import React from "react";
 import { Swipeable } from 'react-swipeable'
 import { animateScroll, scroller } from 'react-scroll';
-import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 import Lethargy from "exports-loader?this.Lethargy!lethargy/lethargy";
 
 const bodyScrollLock = require('body-scroll-lock');
@@ -50,19 +49,18 @@ export default class FullScreen extends React.Component {
 
     scrollDetected = e => {
         e.preventDefault()
-        // e.stopPropagation();
+        e.stopPropagation();
 
         const scrollSign = this.lethargy.check(e);
 
         if (scrollSign !== false) {
-            
+
             if (this.firedEvent) return;
             this.startCountDown();
 
-            console.log('sdf')
             let prevSection = this.getCurrentSection();
             let currentSection = prevSection;
-    
+
             // if (e.nativeEvent.wheelDelta > 0) { // UP
             if (scrollSign > 0) {
                 for (var i = 0; i < this.sections.length; i++) {
@@ -72,10 +70,13 @@ export default class FullScreen extends React.Component {
                     }
                 }
                 if (prevSection == currentSection) {
-                    animateScroll.scrollToTop();
+                    animateScroll.scrollToTop({
+                        duration: 500,
+                        smooth: true,
+                    })
                     return;
                 }
-    
+
             } else { // DOWN
                 for (var i = 0; i < this.sections.length; i++) {
                     if (this.sections[i] == currentSection) {
@@ -96,7 +97,7 @@ export default class FullScreen extends React.Component {
             });
         }
 
-        
+
     }
 
     onSwipedUp = (e) => {
@@ -132,7 +133,10 @@ export default class FullScreen extends React.Component {
             }
         }
         if (prevSection == currentSection) {
-            animateScroll.scrollToTop();
+            animateScroll.scrollToTop({
+                duration: 500,
+                smooth: true,
+            })
             return;
         }
 
@@ -148,22 +152,10 @@ export default class FullScreen extends React.Component {
     render() {
         return (
             <div className="FullScreenComponent">
-
                 <Swipeable onSwipedDown={this.onSwipedDown} onSwipedUp={this.onSwipedUp}>
-                    {/* <ReactScrollWheelHandler
-                    upHandler={this.onSwipedDown}
-                    downHandler={this.onSwipedUp}
-                    timeout={500}
-                    customStyle={{
-                        width: '100%',
-                        height: '100%',
-                        outline: 'none',
-                    }}
-                    preventScroll={true}> */}
                     <div className="SectionContainer" id="SectionContainer">
                         {this.props.children}
                     </div>
-                    {/* </ReactScrollWheelHandler> */}
                 </Swipeable>
             </div>
         )
