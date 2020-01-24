@@ -38,11 +38,9 @@ const TemplateWrapper = ({ children }) => {
       render={data => (
         // <div className={`container`}>
         <React.Fragment>
-          {/* <HelmetDatoCms
+          <HelmetDatoCms
             favicon={data.datoCmsSite.faviconMetaTags}
-            seo={data.datoCmsHome.seoMetaTags}
-          /> */}
-          <HelmetDatoCms>
+            seo={data.datoCmsHome.seoMetaTags}>
             <link href={"https://fonts.googleapis.com/css?family=Raleway&display=swap"} rel="stylesheet"></link>
             <script src="https://kit.fontawesome.com/d3d6f2df1f.js" crossorigin="anonymous"></script>
           </HelmetDatoCms>
