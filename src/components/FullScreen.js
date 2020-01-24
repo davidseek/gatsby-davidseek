@@ -20,37 +20,14 @@ export default class FullScreen extends React.Component {
 
     componentDidMount() {
         document.body.style.overflow = 'hidden';
-        this.sectionContainer = document.getElementById('SectionContainer');
-        // const gapSectionContailer = this.sectionContainer.getBoundingClientRect().top;
-        let tempSections = []
-        this.sectionContainer.childNodes.forEach(childNode => {
-            tempSections.push(childNode.getBoundingClientRect().top)
-        });
-        this.setState({
-            sections: tempSections
-        });
+    }
+
+    getCurrentSection() {
+        return localStorage.getItem('currentSection') || this.state.currentSection || this.sections[0];
     }
 
     scrollDetected = (e) => {
-        // const maxPages = this.state.sections.length;
-        // let prevCurrentPage = this.state.currentPage;
-        // let currentPage = prevCurrentPage;
-
-        // if (e.nativeEvent.wheelDelta > 0) { // UP
-        //     currentPage = this.state.currentPage - 1 >= 0 ? this.state.currentPage - 1 : currentPage;
-        //     if (prevCurrentPage == currentPage) {
-        //         animateScroll.scrollToTop();
-        //         return;
-        //     }
-        // } else { // DOWN
-        //     currentPage = this.state.currentPage + 1 < maxPages ? this.state.currentPage + 1 : currentPage;
-        //     if (prevCurrentPage == currentPage) {
-        //         animateScroll.scrollToBottom();
-        //         return;
-        //     }
-        // }
-        // this.setState({ currentPage: currentPage })
-        let prevSection = this.state.currentSection || this.sections[0];
+        let prevSection = this.getCurrentSection();
         let currentSection = prevSection;
 
         if (e.nativeEvent.wheelDelta > 0) { // UP
@@ -77,6 +54,7 @@ export default class FullScreen extends React.Component {
             }
         }
         this.setState({ currentSection: currentSection })
+        localStorage.removeItem('currentSection');
         scroller.scrollTo(currentSection, {
             duration: 500,
             smooth: true,
@@ -84,17 +62,7 @@ export default class FullScreen extends React.Component {
     }
 
     onSwipedUp = (e) => {
-        // const maxPages = this.state.sections.length;
-        // let prevCurrentPage = this.state.currentPage;
-        // let currentPage = prevCurrentPage;
-        // currentPage = this.state.currentPage + 1 < maxPages ? this.state.currentPage + 1 : currentPage;
-        // if (prevCurrentPage == currentPage) {
-        //     animateScroll.scrollToBottom();
-        //     return;
-        // }
-        // this.setState({ currentPage: currentPage })
-        // animateScroll.scrollTo(this.state.sections[currentPage]);
-        let prevSection = this.state.currentSection || this.sections[0];
+        let prevSection = this.getCurrentSection();
         let currentSection = prevSection;
         for (var i = 0; i < this.sections.length; i++) {
             if (this.sections[i] == currentSection) {
@@ -107,6 +75,7 @@ export default class FullScreen extends React.Component {
             return;
         }
         this.setState({ currentSection: currentSection })
+        localStorage.removeItem('currentSection');
         scroller.scrollTo(currentSection, {
             duration: 500,
             smooth: true,
@@ -114,16 +83,7 @@ export default class FullScreen extends React.Component {
     }
 
     onSwipedDown = (e) => {
-        // let prevCurrentPage = this.state.currentPage;
-        // let currentPage = prevCurrentPage;
-        // currentPage = this.state.currentPage - 1 >= 0 ? this.state.currentPage - 1 : currentPage;
-        // if (prevCurrentPage == currentPage) {
-        //     animateScroll.scrollToTop();
-        //     return;
-        // }
-        // this.setState({ currentPage: currentPage })
-        // animateScroll.scrollTo(this.state.sections[currentPage]);
-        let prevSection = this.state.currentSection || this.sections[0];
+        let prevSection = this.getCurrentSection();
         let currentSection = prevSection;
 
         for (var i = 0; i < this.sections.length; i++) {
@@ -138,6 +98,7 @@ export default class FullScreen extends React.Component {
         }
 
         this.setState({ currentSection: currentSection })
+        localStorage.removeItem('currentSection');
         scroller.scrollTo(currentSection, {
             duration: 500,
             smooth: true,

@@ -7,6 +7,10 @@ import { Row, Col } from 'react-bootstrap';
 
 const Header = ({ email, mainMenu }) => {
 
+    const saveCurrentSection = (section) => {
+        localStorage.setItem('currentSection', section);
+    }
+
     return (
         <section className="section-layout">
             <div className="container">
@@ -21,7 +25,10 @@ const Header = ({ email, mainMenu }) => {
                             <div className="nav-main-menu">
                                 <ul>
                                     {mainMenu.menuItems.map((menu, index) => (
-                                        <li key={index}><Link to={menu.url} smooth={true} duration={500}>{menu.title}</Link></li>
+                                        <li key={index} > <Link to={menu.url} smooth={true} duration={500}
+                                            onClick={e => { saveCurrentSection(menu.url) }}>{menu.title}
+                                        </Link>
+                                        </li>
                                     ))}
                                 </ul>
                             </div>
