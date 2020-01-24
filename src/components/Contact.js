@@ -60,7 +60,7 @@ const Contact = ({ data }) => {
                 'https://us-central1-firenspec.cloudfunctions.net/davidseekMailRequest',
                 {
                     name: values.name || '',
-                    email: values.email || '',
+                    mail: values.email || '',
                     message: values.message || ''
                 },
                 {
