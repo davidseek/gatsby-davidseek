@@ -1,6 +1,6 @@
 import React from "react";
 import { Swipeable } from 'react-swipeable'
-import { animateScroll } from 'react-scroll';
+import { animateScroll, scroller } from 'react-scroll';
 
 export default class FullScreen extends React.Component {
 
@@ -11,9 +11,11 @@ export default class FullScreen extends React.Component {
             sections: [],
             offset: 0,
             currentPage: 0,
+            currentSection: ''
         };
 
         this.sectionContainer = null;
+        this.sections = this.props.sections || [];
     }
 
     componentDidMount() {
@@ -30,50 +32,116 @@ export default class FullScreen extends React.Component {
     }
 
     scrollDetected = (e) => {
-        const maxPages = this.state.sections.length;
-        let prevCurrentPage = this.state.currentPage;
-        let currentPage = prevCurrentPage;
+        // const maxPages = this.state.sections.length;
+        // let prevCurrentPage = this.state.currentPage;
+        // let currentPage = prevCurrentPage;
+
+        // if (e.nativeEvent.wheelDelta > 0) { // UP
+        //     currentPage = this.state.currentPage - 1 >= 0 ? this.state.currentPage - 1 : currentPage;
+        //     if (prevCurrentPage == currentPage) {
+        //         animateScroll.scrollToTop();
+        //         return;
+        //     }
+        // } else { // DOWN
+        //     currentPage = this.state.currentPage + 1 < maxPages ? this.state.currentPage + 1 : currentPage;
+        //     if (prevCurrentPage == currentPage) {
+        //         animateScroll.scrollToBottom();
+        //         return;
+        //     }
+        // }
+        // this.setState({ currentPage: currentPage })
+        let prevSection = this.state.currentSection || this.sections[0];
+        let currentSection = prevSection;
 
         if (e.nativeEvent.wheelDelta > 0) { // UP
-            currentPage = this.state.currentPage - 1 >= 0 ? this.state.currentPage - 1 : currentPage;
-            if (prevCurrentPage == currentPage) {
+            for (var i = 0; i < this.sections.length; i++) {
+                if (this.sections[i] == prevSection) {
+                    currentSection = this.sections[i - 1 >= 0 ? i - 1 : i];
+                    break;
+                }
+            }
+            if (prevSection == currentSection) {
                 animateScroll.scrollToTop();
                 return;
             }
         } else { // DOWN
-            currentPage = this.state.currentPage + 1 < maxPages ? this.state.currentPage + 1 : currentPage;
-            if (prevCurrentPage == currentPage) {
+            for (var i = 0; i < this.sections.length; i++) {
+                if (this.sections[i] == currentSection) {
+                    currentSection = this.sections[i + 1 < this.sections.length ? i + 1 : i];
+                    break;
+                }
+            }
+            if (prevSection == currentSection) {
                 animateScroll.scrollToBottom();
                 return;
             }
         }
-        this.setState({ currentPage: currentPage })
-        animateScroll.scrollTo(this.state.sections[currentPage]);
+        this.setState({ currentSection: currentSection })
+        scroller.scrollTo(currentSection, {
+            duration: 500,
+            smooth: true,
+        });
     }
 
     onSwipedUp = (e) => {
-        const maxPages = this.state.sections.length;
-        let prevCurrentPage = this.state.currentPage;
-        let currentPage = prevCurrentPage;
-        currentPage = this.state.currentPage + 1 < maxPages ? this.state.currentPage + 1 : currentPage;
-        if (prevCurrentPage == currentPage) {
+        // const maxPages = this.state.sections.length;
+        // let prevCurrentPage = this.state.currentPage;
+        // let currentPage = prevCurrentPage;
+        // currentPage = this.state.currentPage + 1 < maxPages ? this.state.currentPage + 1 : currentPage;
+        // if (prevCurrentPage == currentPage) {
+        //     animateScroll.scrollToBottom();
+        //     return;
+        // }
+        // this.setState({ currentPage: currentPage })
+        // animateScroll.scrollTo(this.state.sections[currentPage]);
+        let prevSection = this.state.currentSection || this.sections[0];
+        let currentSection = prevSection;
+        for (var i = 0; i < this.sections.length; i++) {
+            if (this.sections[i] == currentSection) {
+                currentSection = this.sections[i + 1 < this.sections.length ? i + 1 : i];
+                break;
+            }
+        }
+        if (prevSection == currentSection) {
             animateScroll.scrollToBottom();
             return;
         }
-        this.setState({ currentPage: currentPage })
-        animateScroll.scrollTo(this.state.sections[currentPage]);
+        this.setState({ currentSection: currentSection })
+        scroller.scrollTo(currentSection, {
+            duration: 500,
+            smooth: true,
+        });
     }
 
     onSwipedDown = (e) => {
-        let prevCurrentPage = this.state.currentPage;
-        let currentPage = prevCurrentPage;
-        currentPage = this.state.currentPage - 1 >= 0 ? this.state.currentPage - 1 : currentPage;
-        if (prevCurrentPage == currentPage) {
+        // let prevCurrentPage = this.state.currentPage;
+        // let currentPage = prevCurrentPage;
+        // currentPage = this.state.currentPage - 1 >= 0 ? this.state.currentPage - 1 : currentPage;
+        // if (prevCurrentPage == currentPage) {
+        //     animateScroll.scrollToTop();
+        //     return;
+        // }
+        // this.setState({ currentPage: currentPage })
+        // animateScroll.scrollTo(this.state.sections[currentPage]);
+        let prevSection = this.state.currentSection || this.sections[0];
+        let currentSection = prevSection;
+
+        for (var i = 0; i < this.sections.length; i++) {
+            if (this.sections[i] == prevSection) {
+                currentSection = this.sections[i - 1 >= 0 ? i - 1 : i];
+                break;
+            }
+        }
+        if (prevSection == currentSection) {
             animateScroll.scrollToTop();
             return;
         }
-        this.setState({ currentPage: currentPage })
-        animateScroll.scrollTo(this.state.sections[currentPage]);
+
+        this.setState({ currentSection: currentSection })
+        scroller.scrollTo(currentSection, {
+            duration: 500,
+            smooth: true,
+        });
     }
 
     render() {
