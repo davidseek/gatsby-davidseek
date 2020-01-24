@@ -62,6 +62,12 @@ const Contact = ({ data }) => {
                     name: values.name || '',
                     email: values.email || '',
                     message: values.message || ''
+                },
+                {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
                 }
             );
             if (response.data.success) {
