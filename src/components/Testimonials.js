@@ -22,6 +22,17 @@ const responsiveCarousel = {
     },
 };
 
+const CustomDot = ({ onClick, active, index, carouselState }) => {
+    const { currentSlide } = carouselState;
+    return (
+        <li>
+            <button
+                className={active ? "testimonial-dot active" : "testimonial-dot"}
+                onClick={() => onClick()}
+            />
+        </li>
+    );
+};
 const Testimonials = ({ data }) => (
     <Element className="#section-testimonials">
         <section className="section-testimonials center-section">
@@ -33,6 +44,7 @@ const Testimonials = ({ data }) => (
                         ssr={false}
                         removeArrowOnDeviceType={['superLargeDesktop', 'desktop', 'tablet', 'mobile']}
                         showDots={true}
+                        customDot={<CustomDot />}
                     >
                         {data && data.edges.map((testimonial, index) => (
                             <div key={index} className="testimonial-item">

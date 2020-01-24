@@ -142,6 +142,18 @@ section {
         font-weight: 600;
     }
 
+    .testimonial-dot {
+        border: 0;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        background-color: #ebebeb;
+    }
+
+    .testimonial-dot .active {
+        background-color: #bbbbbb;
+    }
+
     @media (prefers-color-scheme: dark) {
         color: $dark-color;
     }
