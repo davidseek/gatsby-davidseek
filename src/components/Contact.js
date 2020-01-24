@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Spinner, Alert } from 'react-bootstrap';
 import { Element } from 'react-scroll';
+import axios from 'axios';
 
 const RenderInputType = ({ value, inputField, handleOnChange }) => {
     switch (inputField.inputType) {
@@ -28,6 +29,9 @@ const RenderInputType = ({ value, inputField, handleOnChange }) => {
 const Contact = ({ data }) => {
 
     const [values, setValues] = useState({})
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setISubmitted] = useState(false);
+    const [onError, setOnError] = useState(false);
 
     useEffect(() => {
         let tempValues = {}
@@ -47,8 +51,27 @@ const Contact = ({ data }) => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setOnError(false);
+        setIsSubmitting(true);
+        try {
+            const response = await axios.post(
+                'https://us-central1-firenspec.cloudfunctions.net/davidseekMailRequest',
+                {
+                    name: values.name || '',
+                    email: values.email || '',
+                    message: values.message || ''
+                }
+            );
+            if (response.data.success) {
+                setISubmitted(true);
+            }
+        } catch (error) {
+            console.log(error)
+            setOnError(true);
+        }
+        setIsSubmitting(false)
         console.log(values)
     }
 
@@ -63,22 +86,16 @@ const Contact = ({ data }) => {
                                 {data.inputFields.map((inputField, index) => (
                                     <Col lg={inputField.col} key={index}>
                                         <RenderInputType
-                                            value={values[inputField.name]}
+                                            value={values[inputField.name] || ''}
                                             inputField={inputField}
                                             handleOnChange={handleOnChange} />
                                     </Col>
                                 ))}
-                                {/* <Col lg={6}>
-                        <input className="field" type="text" placeholder="Your Name*"></input>
-                    </Col>
-                    <Col lg={6}>
-                        <input className="field" type="email" placeholder="Your Email*"></input>
-                    </Col>
-                    <Col lg={12}>
-                        <textarea className="field" rows="4" placeholder="Your Message*"></textarea>
-                    </Col> */}
                             </Row>
-                            <button type="submit">{data.submitText}</button>
+                            {isSubmitted && <Alert variant="success">Message sent</Alert>}
+                            {onError && <Alert variant="danger">Something went wrong!</Alert>}
+
+                            <button type="submit">{isSubmitting && <Spinner animation="border" size="sm" />}  {data.submitText}</button>
                         </form>
                     </div>
                 </div>
