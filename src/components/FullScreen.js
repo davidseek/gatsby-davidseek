@@ -1,6 +1,7 @@
 import React from "react";
 import { Swipeable } from 'react-swipeable'
 import { animateScroll, scroller } from 'react-scroll';
+import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 const bodyScrollLock = require('body-scroll-lock');
 
 export default class FullScreen extends React.Component {
@@ -65,6 +66,7 @@ export default class FullScreen extends React.Component {
     }
 
     onSwipedUp = (e) => {
+        console.log('swipe up')
         let prevSection = this.getCurrentSection();
         let currentSection = prevSection;
         for (var i = 0; i < this.sections.length; i++) {
@@ -79,8 +81,9 @@ export default class FullScreen extends React.Component {
         }
         this.setState({ currentSection: currentSection })
         localStorage.removeItem('currentSection');
-        scroller.scrollTo(currentSection, {
+        return scroller.scrollTo(currentSection, {
             duration: 500,
+            delay: 0,
             smooth: true,
         });
     }
@@ -102,8 +105,9 @@ export default class FullScreen extends React.Component {
 
         this.setState({ currentSection: currentSection })
         localStorage.removeItem('currentSection');
-        scroller.scrollTo(currentSection, {
+        return scroller.scrollTo(currentSection, {
             duration: 500,
+            delay: 0,
             smooth: true,
         });
     }
@@ -111,11 +115,22 @@ export default class FullScreen extends React.Component {
     render() {
         return (
             <div className="FullScreenComponent">
+
                 <Swipeable onSwipedDown={this.onSwipedDown} onSwipedUp={this.onSwipedUp}>
-                    <div className="SectionContainer" id="SectionContainer"
-                        onWheel={this.scrollDetected}>
-                        {this.props.children}
-                    </div>
+                    <ReactScrollWheelHandler
+                        upHandler={this.onSwipedDown}
+                        downHandler={this.onSwipedUp}
+                        timeout={500}
+                        customStyle={{
+                            width: '100%',
+                            height: '100%',
+                            outline: 'none',
+                            zIndex: 1000
+                        }}>
+                        <div className="SectionContainer" id="SectionContainer">
+                            {this.props.children}
+                        </div>
+                    </ReactScrollWheelHandler>
                 </Swipeable>
             </div>
         )
