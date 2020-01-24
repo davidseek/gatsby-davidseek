@@ -2,6 +2,8 @@ import React from "react";
 import { Swipeable } from 'react-swipeable'
 import { animateScroll, scroller } from 'react-scroll';
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
+import Lethargy from "exports-loader?this.Lethargy!lethargy/lethargy";
+
 const bodyScrollLock = require('body-scroll-lock');
 
 export default class FullScreen extends React.Component {
@@ -17,6 +19,7 @@ export default class FullScreen extends React.Component {
         };
 
         this.firedEvent = false;
+        this.lethargy = new Lethargy(3, 10, 0.05);
 
         this.sectionContainer = null;
         this.sections = this.props.sections || [];
@@ -27,11 +30,11 @@ export default class FullScreen extends React.Component {
         localStorage.removeItem('currentSection');
         bodyScrollLock.disableBodyScroll(document.getElementsByTagName("html"))
 
-        // document.addEventListener(
-        //     "wheel",
-        //     this.scrollDetected,
-        //     { passive: false }
-        // );
+        document.addEventListener(
+            'wheel',
+            this.scrollDetected,
+            { passive: false }
+        );
     }
 
     getCurrentSection() {
@@ -42,52 +45,58 @@ export default class FullScreen extends React.Component {
         this.firedEvent = true;
         setTimeout(() => {
             this.firedEvent = false;
-        }, 500*2);
+        }, 500);
     }
 
-    scrollDetected = (e) => {
+    scrollDetected = e => {
+        e.preventDefault()
         // e.stopPropagation();
-        // e.preventDefault();
-        // console.log('prop')
 
+        const scrollSign = this.lethargy.check(e);
 
-        // if (this.firedEvent) return;
-        this.startCountDown();
-        console.log('sdf')
-        let prevSection = this.getCurrentSection();
-        let currentSection = prevSection;
+        if (scrollSign !== false) {
+            
+            if (this.firedEvent) return;
+            this.startCountDown();
 
-        // if (e.nativeEvent.wheelDelta > 0) { // UP
-        if (e.deltaY > 0) {
-            for (var i = 0; i < this.sections.length; i++) {
-                if (this.sections[i] == prevSection) {
-                    currentSection = this.sections[i - 1 >= 0 ? i - 1 : i];
-                    break;
+            console.log('sdf')
+            let prevSection = this.getCurrentSection();
+            let currentSection = prevSection;
+    
+            // if (e.nativeEvent.wheelDelta > 0) { // UP
+            if (scrollSign > 0) {
+                for (var i = 0; i < this.sections.length; i++) {
+                    if (this.sections[i] == prevSection) {
+                        currentSection = this.sections[i - 1 >= 0 ? i - 1 : i];
+                        break;
+                    }
+                }
+                if (prevSection == currentSection) {
+                    animateScroll.scrollToTop();
+                    return;
+                }
+    
+            } else { // DOWN
+                for (var i = 0; i < this.sections.length; i++) {
+                    if (this.sections[i] == currentSection) {
+                        currentSection = this.sections[i + 1 < this.sections.length ? i + 1 : i];
+                        break;
+                    }
+                }
+                if (prevSection == currentSection) {
+                    animateScroll.scrollToBottom();
+                    return;
                 }
             }
-            if (prevSection == currentSection) {
-                animateScroll.scrollToTop();
-                return;
-            }
-
-        } else { // DOWN
-            for (var i = 0; i < this.sections.length; i++) {
-                if (this.sections[i] == currentSection) {
-                    currentSection = this.sections[i + 1 < this.sections.length ? i + 1 : i];
-                    break;
-                }
-            }
-            if (prevSection == currentSection) {
-                animateScroll.scrollToBottom();
-                return;
-            }
+            this.setState({ currentSection: currentSection })
+            localStorage.removeItem('currentSection');
+            scroller.scrollTo(currentSection, {
+                duration: 500,
+                smooth: true,
+            });
         }
-        this.setState({ currentSection: currentSection })
-        localStorage.removeItem('currentSection');
-        scroller.scrollTo(currentSection, {
-            duration: 500,
-            smooth: true,
-        });
+
+        
     }
 
     onSwipedUp = (e) => {
@@ -140,22 +149,22 @@ export default class FullScreen extends React.Component {
         return (
             <div className="FullScreenComponent">
 
-                {/* <Swipeable onSwipedDown={this.onSwipedDown} onSwipedUp={this.onSwipedUp}> */}
-                    <ReactScrollWheelHandler
-                        upHandler={this.onSwipedDown}
-                        downHandler={this.onSwipedUp}
-                        timeout={500}
-                        customStyle={{
-                            width: '100%',
-                            height: '100%',
-                            outline: 'none',
-                        }}
-                        preventScroll={true}>
+                <Swipeable onSwipedDown={this.onSwipedDown} onSwipedUp={this.onSwipedUp}>
+                    {/* <ReactScrollWheelHandler
+                    upHandler={this.onSwipedDown}
+                    downHandler={this.onSwipedUp}
+                    timeout={500}
+                    customStyle={{
+                        width: '100%',
+                        height: '100%',
+                        outline: 'none',
+                    }}
+                    preventScroll={true}> */}
                     <div className="SectionContainer" id="SectionContainer">
                         {this.props.children}
                     </div>
-                    </ReactScrollWheelHandler>
-                {/* </Swipeable> */}
+                    {/* </ReactScrollWheelHandler> */}
+                </Swipeable>
             </div>
         )
     }
