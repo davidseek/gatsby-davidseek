@@ -43,6 +43,7 @@ const TemplateWrapper = ({ children }) => {
             seo={data.datoCmsHome.seoMetaTags}
           /> */}
           <HelmetDatoCms>
+            <link href={"https://fonts.googleapis.com/css?family=Raleway&display=swap"} rel="stylesheet"></link>
             <script src="https://kit.fontawesome.com/d3d6f2df1f.js" crossorigin="anonymous"></script>
           </HelmetDatoCms>
           <Header email={data.datoCmsHome.email} mainMenu={data.datoCmsMenu} />
