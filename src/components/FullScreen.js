@@ -16,6 +16,8 @@ export default class FullScreen extends React.Component {
             currentSection: ''
         };
 
+        this.firedEvent = false;
+
         this.sectionContainer = null;
         this.sections = this.props.sections || [];
     }
@@ -24,17 +26,39 @@ export default class FullScreen extends React.Component {
         // document.body.style.overflow = 'hidden';
         localStorage.removeItem('currentSection');
         bodyScrollLock.disableBodyScroll(document.getElementsByTagName("html"))
+
+        // document.addEventListener(
+        //     "wheel",
+        //     this.scrollDetected,
+        //     { passive: false }
+        // );
     }
 
     getCurrentSection() {
         return localStorage.getItem('currentSection') || this.state.currentSection || this.sections[0];
     }
 
+    startCountDown() {
+        this.firedEvent = true;
+        setTimeout(() => {
+            this.firedEvent = false;
+        }, 500*2);
+    }
+
     scrollDetected = (e) => {
+        // e.stopPropagation();
+        // e.preventDefault();
+        // console.log('prop')
+
+
+        // if (this.firedEvent) return;
+        this.startCountDown();
+        console.log('sdf')
         let prevSection = this.getCurrentSection();
         let currentSection = prevSection;
 
-        if (e.nativeEvent.wheelDelta > 0) { // UP
+        // if (e.nativeEvent.wheelDelta > 0) { // UP
+        if (e.deltaY > 0) {
             for (var i = 0; i < this.sections.length; i++) {
                 if (this.sections[i] == prevSection) {
                     currentSection = this.sections[i - 1 >= 0 ? i - 1 : i];
@@ -45,6 +69,7 @@ export default class FullScreen extends React.Component {
                 animateScroll.scrollToTop();
                 return;
             }
+
         } else { // DOWN
             for (var i = 0; i < this.sections.length; i++) {
                 if (this.sections[i] == currentSection) {
@@ -66,7 +91,6 @@ export default class FullScreen extends React.Component {
     }
 
     onSwipedUp = (e) => {
-        console.log('swipe up')
         let prevSection = this.getCurrentSection();
         let currentSection = prevSection;
         for (var i = 0; i < this.sections.length; i++) {
@@ -116,7 +140,7 @@ export default class FullScreen extends React.Component {
         return (
             <div className="FullScreenComponent">
 
-                <Swipeable onSwipedDown={this.onSwipedDown} onSwipedUp={this.onSwipedUp}>
+                {/* <Swipeable onSwipedDown={this.onSwipedDown} onSwipedUp={this.onSwipedUp}> */}
                     <ReactScrollWheelHandler
                         upHandler={this.onSwipedDown}
                         downHandler={this.onSwipedUp}
@@ -125,13 +149,13 @@ export default class FullScreen extends React.Component {
                             width: '100%',
                             height: '100%',
                             outline: 'none',
-                            zIndex: 1000
-                        }}>
-                        <div className="SectionContainer" id="SectionContainer">
-                            {this.props.children}
-                        </div>
+                        }}
+                        preventScroll={true}>
+                    <div className="SectionContainer" id="SectionContainer">
+                        {this.props.children}
+                    </div>
                     </ReactScrollWheelHandler>
-                </Swipeable>
+                {/* </Swipeable> */}
             </div>
         )
     }
