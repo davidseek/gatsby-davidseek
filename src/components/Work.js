@@ -2,7 +2,6 @@ import React from 'react'
 import Img from 'gatsby-image'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Section } from 'react-fullpage';
 import { Element } from 'react-scroll';
 
 const responsiveCarousel = {
@@ -26,7 +25,7 @@ const responsiveCarousel = {
 
 const Work = ({ data }) => (
     <Element name="#section-work">
-        <section className="section-work">
+        <section className="section-work center-section">
             <div className="container">
                 <Carousel
                     responsive={responsiveCarousel}
@@ -37,7 +36,9 @@ const Work = ({ data }) => (
                     {data && data.edges.map((work, index) => (
                         <div key={index} className="work-item">
                             <div className="work-overlay" />
-                            <Img fluid={work.node.coverImage.fluid} />
+                            {/* <Img fluid={work.node.coverImage.fluid} /> */}
+                            <img src={work.node.coverImage.fluid.src}
+                                srcSet={work.node.coverImage.fluid.srcSet} />
                             <i className={work.node.fontAwesomeIcon}></i>
                         </div>
                     ))}

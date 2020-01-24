@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Header from "./header";
 import Footer from "./footer";
-import { Header as HeaderFullPage, Footer as FooterFullpage } from 'react-fullpage';
 
 const TemplateWrapper = ({ children }) => {
 

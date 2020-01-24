@@ -9,12 +9,14 @@ const Footer = ({ copyright }) => {
 
     return (
         <section className="section-layout">
-            <div className="footer-section">
-                <Row>
-                    <Col lg={12}>
-                        <p>{copyright}</p>
-                    </Col>
-                </Row>
+            <div className="container">
+                <div className="footer-section">
+                    <Row>
+                        <Col lg={12}>
+                            <p>{copyright}</p>
+                        </Col>
+                    </Row>
+                </div>
             </div>
         </section>
     );

@@ -10,17 +10,13 @@
     min-height: auto !important;
 }
 
-
 section {
     min-height: 100vh;
 
     .container {
         width: 85%;
-        // padding: 0 24px;
-        // padding-bottom: 100px;
     }
 }
-
 
 .center-section {
     display: flex;
@@ -30,6 +26,7 @@ section {
 
 .section-about {
     text-align: center;
+    padding-bottom: 10%;
 
     .container {
         display: flex;
@@ -71,7 +68,7 @@ section {
         align-items: center;
         margin: 0 8px;
         background: lightgray;
-        height: 560px;
+        min-height: 560px;
         overflow: hidden;
         cursor: pointer;
 
@@ -81,6 +78,7 @@ section {
         }
 
         img {
+            position: absolute;
             height: 100%;
         }
 
@@ -153,6 +151,11 @@ section {
     text-align: center;
 
     .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
         .container {
             width: 70%;
         }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap';
-import { Section } from 'react-fullpage';
 import { Element } from 'react-scroll';
 
 const RenderInputType = ({ value, inputField, handleOnChange }) => {

@@ -14,7 +14,7 @@ const Header = ({ email, mainMenu }) => {
                     <Row>
                         <Col lg={3} className="nav-contact">
                             <div>
-                                <p>{email}</p>
+                                <a href={`mailto:${email}`}>{email}</a>
                             </div>
                         </Col>
                         <Col lg={9} className="nav-menus">

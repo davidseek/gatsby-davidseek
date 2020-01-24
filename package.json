@@ -18,7 +18,6 @@
     "react": "^16.10.2",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.10.2",
-    "react-fullpage": "^0.1.19",
     "react-helmet": "^5.2.0",
     "react-masonry-component": "^6.2.1",
     "react-multi-carousel": "^2.5.0",

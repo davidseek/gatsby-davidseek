@@ -6,6 +6,14 @@
     
     .nav-contact {
         text-align: left;
+
+        a {
+            color: $light-color;
+
+            @media (prefers-color-scheme: dark) {
+                  color: $dark-color;
+              }
+        }
     }
 
     .nav-menus {
@@ -21,6 +29,7 @@
 
             li {
                 display: inline-block;
+                cursor: pointer;
                 
                 a {
                     color: $light-color;

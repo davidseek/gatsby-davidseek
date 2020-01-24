@@ -1,10 +1,9 @@
 import React from 'react'
-import { Section } from 'react-fullpage';
 import { Element } from 'react-scroll';
 
 const About = ({ data }) => (
     <Element name="#section-about">
-        <section className="section-about">
+        <section className="section-about center-section">
             <div className="container">
                 <div className="container">
                     {data && (
