@@ -145,17 +145,30 @@ section {
     .testimonial-dot {
         border: 0;
         border-radius: 50%;
-        width: 18px;
-        height: 18px;
+        width: 12px;
+        height: 12px;
         background-color: #ebebeb;
+        margin: 0 5px;
+
+        &:focus {
+            outline: none;
+        }
     }
 
-    .testimonial-dot .active {
+    .active {
         background-color: #bbbbbb;
     }
 
     @media (prefers-color-scheme: dark) {
         color: $dark-color;
+
+        .testimonial-dot {
+            background-color: #909090;
+        }
+
+        .active {
+            background-color: #ffffff;
+        }
     }
 }
 
