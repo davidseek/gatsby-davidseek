@@ -19,7 +19,8 @@ export default class FullScreen extends React.Component {
     }
 
     componentDidMount() {
-        document.body.style.overflow = 'hidden';
+        // document.body.style.overflow = 'hidden';
+        localStorage.removeItem('currentSection');
     }
 
     getCurrentSection() {
