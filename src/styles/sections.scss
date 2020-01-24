@@ -84,10 +84,33 @@ section {
 
         i {
             position: absolute;
-            font-size: 70px;
+            font-size: 75px;
             opacity: 0;
             transition: all 0.25s ease-in;
             z-index: 99;
+            color: $dark-color;
+
+            &:after {
+                content: '';
+                position: absolute;
+                display: bloc;
+                left: -10%;
+                right: 0;
+                top: -10%;
+                border-radius: 50%;
+                width: 120%;
+                height: 120%;
+                background: $dark-bg-color;
+                z-index: -1;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                color: $light-color;
+
+                &:after {
+                    background: $light-bg-color;
+                }
+            }
         }
 
         .work-overlay {
