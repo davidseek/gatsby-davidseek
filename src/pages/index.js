@@ -11,7 +11,18 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <FullScreen sections={['#section-about', '#section-work', '#section-testimonials', '#section-contact']}
-        onSectionEnd={function(section) { console.log(section) }}>
+        onSectionStart={section => {
+          if (section !== '#section-contact') {
+            let footerElement = document.getElementById("footer-section");
+            footerElement.onHide();
+          }
+        }}
+        onSectionEnd={section => {
+          if (section == '#section-contact') {
+            let footerElement = document.getElementById("footer-section");
+            footerElement.onDisplay();
+          }
+        }}>
         <About data={data.datoCmsAbout} />
         <Work data={data.allDatoCmsWork} />
         <Testimonials data={data.allDatoCmsTestimonial} />

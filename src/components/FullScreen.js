@@ -23,7 +23,6 @@ export default class FullScreen extends React.Component {
         this.sectionContainer = null;
         this.sections = this.props.sections || [];
         this.onSectionEnd = this.props.onSectionEnd;
-        console.log(this.onSectionEnd)
     }
 
     componentDidMount() {
@@ -37,14 +36,13 @@ export default class FullScreen extends React.Component {
             { passive: false }
         );
 
-        // Events.scrollEvent.register('start', function (to, element) {
-        //     // console.log("end", to);
-        //     if (to) this.props.onSectionStart({section:to});
-        // });
+        const { onSectionStart, onSectionEnd } = this.props;;
 
+        Events.scrollEvent.register('begin', function (to, element) {
+            if (to) onSectionStart(to);
+        });
         Events.scrollEvent.register('end', function (to, element) {
-            // console.log("end", to);
-            if (to) this.onSectionEnd;
+            if (to) onSectionEnd(to);
         });
 
         scrollSpy.update();
