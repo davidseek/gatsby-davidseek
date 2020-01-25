@@ -36,8 +36,7 @@ const TemplateWrapper = ({ children }) => {
         }
       `}
       render={data => (
-        // <div className={`container`}>
-        <React.Fragment>
+        <div style={{ height: '100%', position: 'relative' }}>
           <HelmetDatoCms
             favicon={data.datoCmsSite.faviconMetaTags}
             seo={data.datoCmsHome.seoMetaTags}>
@@ -47,8 +46,7 @@ const TemplateWrapper = ({ children }) => {
           <Header email={data.datoCmsHome.email} mainMenu={data.datoCmsMenu} />
           {children}
           <Footer copyright={data.datoCmsHome.copyright} />
-        </React.Fragment>
-        // </div>
+        </div>
       )}
     />
   );
