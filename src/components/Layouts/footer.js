@@ -8,16 +8,16 @@ import { Row, Col } from 'react-bootstrap';
 const Footer = ({ copyright }) => {
 
     return (
-        <section className="section-layout">
-            <div className="container">
-                <div className="footer-section">
+        <section className="section-layout footer-section">
+            {/* <div className=""> */}
+                <div className="container">
                     <Row>
                         <Col lg={12}>
                             <p>{copyright}</p>
                         </Col>
                     </Row>
                 </div>
-            </div>
+            {/* </div> */}
         </section>
     );
 };

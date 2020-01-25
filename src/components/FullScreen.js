@@ -1,6 +1,6 @@
 import React from "react";
 import { Swipeable } from 'react-swipeable'
-import { animateScroll, scroller } from 'react-scroll';
+import { animateScroll, scroller, Events, scrollSpy } from 'react-scroll';
 import Lethargy from "exports-loader?this.Lethargy!lethargy/lethargy";
 
 const bodyScrollLock = require('body-scroll-lock');
@@ -22,6 +22,8 @@ export default class FullScreen extends React.Component {
 
         this.sectionContainer = null;
         this.sections = this.props.sections || [];
+        this.onSectionEnd = this.props.onSectionEnd;
+        console.log(this.onSectionEnd)
     }
 
     componentDidMount() {
@@ -34,6 +36,18 @@ export default class FullScreen extends React.Component {
             this.scrollDetected,
             { passive: false }
         );
+
+        // Events.scrollEvent.register('start', function (to, element) {
+        //     // console.log("end", to);
+        //     if (to) this.props.onSectionStart({section:to});
+        // });
+
+        Events.scrollEvent.register('end', function (to, element) {
+            // console.log("end", to);
+            if (to) this.onSectionEnd;
+        });
+
+        scrollSpy.update();
     }
 
     getCurrentSection() {
@@ -69,13 +83,13 @@ export default class FullScreen extends React.Component {
                         break;
                     }
                 }
-                if (prevSection == currentSection) {
-                    animateScroll.scrollToTop({
-                        duration: 500,
-                        smooth: true,
-                    })
-                    return;
-                }
+                // if (prevSection == currentSection) {
+                //     animateScroll.scrollToTop({
+                //         duration: 500,
+                //         smooth: true,
+                //     })
+                //     return;
+                // }
 
             } else { // DOWN
                 for (var i = 0; i < this.sections.length; i++) {
@@ -84,10 +98,10 @@ export default class FullScreen extends React.Component {
                         break;
                     }
                 }
-                if (prevSection == currentSection) {
-                    animateScroll.scrollToBottom();
-                    return;
-                }
+                // if (prevSection == currentSection) {
+                //     animateScroll.scrollToBottom();
+                //     return;
+                // }
             }
             this.setState({ currentSection: currentSection })
             localStorage.removeItem('currentSection');
@@ -109,10 +123,10 @@ export default class FullScreen extends React.Component {
                 break;
             }
         }
-        if (prevSection == currentSection) {
-            animateScroll.scrollToBottom();
-            return;
-        }
+        // if (prevSection == currentSection) {
+        //     animateScroll.scrollToBottom();
+        //     return;
+        // }
         this.setState({ currentSection: currentSection })
         localStorage.removeItem('currentSection');
         return scroller.scrollTo(currentSection, {
@@ -132,13 +146,13 @@ export default class FullScreen extends React.Component {
                 break;
             }
         }
-        if (prevSection == currentSection) {
-            animateScroll.scrollToTop({
-                duration: 500,
-                smooth: true,
-            })
-            return;
-        }
+        // if (prevSection == currentSection) {
+        //     animateScroll.scrollToTop({
+        //         duration: 500,
+        //         smooth: true,
+        //     })
+        //     return;
+        // }
 
         this.setState({ currentSection: currentSection })
         localStorage.removeItem('currentSection');

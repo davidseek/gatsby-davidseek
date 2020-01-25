@@ -13,8 +13,9 @@ const Header = ({ email, mainMenu }) => {
 
     return (
         <section className="section-layout">
-            <div className="container">
-                <div className="nav-header">
+            <div className="nav-header">
+                <div className="container">
+
                     <Row>
                         <Col lg={3} className="nav-contact">
                             <div>

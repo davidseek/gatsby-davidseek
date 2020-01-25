@@ -10,7 +10,8 @@ import FullScreen from '../components/FullScreen';
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <FullScreen sections={['#section-about','#section-work','#section-testimonials','#section-contact']}>
+      <FullScreen sections={['#section-about', '#section-work', '#section-testimonials', '#section-contact']}
+        onSectionEnd={function(section) { console.log(section) }}>
         <About data={data.datoCmsAbout} />
         <Work data={data.allDatoCmsWork} />
         <Testimonials data={data.allDatoCmsTestimonial} />
