@@ -48,6 +48,7 @@ export const query = graphql`
     allDatoCmsWork {
       edges {
         node {
+          url
           id
           fontAwesomeIcon
           coverImage {

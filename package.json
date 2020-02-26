@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-datocms-demo",
-  "description": "Gatsby DatoCMS creative portfolio demo",
+  "name": "davidseek.com",
+  "description": "David Seek - Full Stack Developer",
   "version": "1.0.0",
-  "author": "Stefano Verna <s.verna@datocms.com>",
+  "author": "David Seek <david@davidseek.com>",
   "dependencies": {
     "axios": "^0.19.2",
     "body-scroll-lock": "^2.6.4",

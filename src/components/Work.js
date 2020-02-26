@@ -41,6 +41,7 @@ const Work = ({ data }) => (
                                 srcSet={work.node.coverImage.fluid.srcSet} />
                             <i className={work.node.fontAwesomeIcon}></i>
                         </div>
+
                     ))}
                 </Carousel>
             </div>
