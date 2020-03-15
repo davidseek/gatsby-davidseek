@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import { StaticQuery, graphql } from "gatsby";
-import { HelmetDatoCms } from "gatsby-source-datocms";
-import { Row, Col } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import { Col, Row } from 'react-bootstrap';
 
 const Footer = ({ copyright }) => {
 

@@ -12,7 +12,7 @@ const About = ({ data }) => (
                             <h2 className="h2-b">{data.subtitle}</h2>
                             <div className="about-social-links">
                                 {data.socialLinks.map((socialLink, index) => (
-                                    <a key={index} href={socialLink.url}><i className={socialLink.fontAwesomeIcon}></i></a>
+                                    <a key={index} href={socialLink.url} target="_blank"><i className={socialLink.fontAwesomeIcon}></i></a>
                                 ))}
                             </div>
                         </React.Fragment>

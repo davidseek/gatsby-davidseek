@@ -1,5 +1,4 @@
-import React from 'react'
-import Img from 'gatsby-image'
+import React from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Element } from 'react-scroll';

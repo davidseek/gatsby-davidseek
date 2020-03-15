@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import { StaticQuery, graphql } from "gatsby";
+import { graphql, StaticQuery } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import Header from "./header";
+import PropTypes from "prop-types";
+import React from "react";
 import Footer from "./footer";
+import Header from "./header";
 
 const TemplateWrapper = ({ children }) => {
 

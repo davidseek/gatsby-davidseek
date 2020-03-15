@@ -1,32 +1,14 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Layout from "../components/Layouts/layout"
+import { graphql } from 'gatsby';
+import React from 'react';
 import About from '../components/About';
-import Work from '../components/Work';
-import Testimonials from '../components/Testimonials';
-import Contact from '../components/Contact';
 import FullScreen from '../components/FullScreen';
+import Layout from "../components/Layouts/layout";
 
 const IndexPage = ({ data }) => {
   return (
     <Layout>
-      <FullScreen sections={['#section-about', '#section-work', '#section-testimonials', '#section-contact']}
-        onSectionStart={section => {
-          if (section !== '#section-contact') {
-            let footerElement = document.getElementById("footer-section");
-            footerElement.onHide();
-          }
-        }}
-        onSectionEnd={section => {
-          if (section == '#section-contact') {
-            let footerElement = document.getElementById("footer-section");
-            footerElement.onDisplay();
-          }
-        }}>
+      <FullScreen sections={['#section-about', '#section-work', '#section-testimonials', '#section-contact']}>
         <About data={data.datoCmsAbout} />
-        <Work data={data.allDatoCmsWork} />
-        <Testimonials data={data.allDatoCmsTestimonial} />
-        <Contact data={data.datoCmsForm} />
       </FullScreen>
     </Layout>
   )

@@ -1,7 +1,7 @@
-import React from "react";
-import { Swipeable } from 'react-swipeable'
-import { animateScroll, scroller, Events, scrollSpy } from 'react-scroll';
 import Lethargy from "exports-loader?this.Lethargy!lethargy/lethargy";
+import React from "react";
+import { Events, scroller, scrollSpy } from 'react-scroll';
+import { Swipeable } from 'react-swipeable';
 
 const bodyScrollLock = require('body-scroll-lock');
 
